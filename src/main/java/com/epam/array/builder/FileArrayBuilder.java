@@ -9,7 +9,11 @@ import java.util.Scanner;
 
 public class FileArrayBuilder extends ArrayBuilder {
 
-    private static final String FILE_NAME = "FileArrayBuilderInput";
+    private final String FILE_NAME;
+
+    public FileArrayBuilder(String FILE_NAME) {
+        this.FILE_NAME = FILE_NAME;
+    }
 
     @Override
     public void createArray() {
