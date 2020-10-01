@@ -1,22 +1,29 @@
-package com.epam.array.builder;
+package com.epam.array.data;
 
 import com.epam.array.entity.Array;
+import com.epam.array.exception.DataException;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class FileArrayBuilder extends ArrayBuilder {
+public class FileArrayProvider implements ArrayProvider {
 
     private final String FILE_NAME;
 
-    public FileArrayBuilder(String FILE_NAME) {
+    public FileArrayProvider(String FILE_NAME) {
         this.FILE_NAME = FILE_NAME;
     }
 
     @Override
-    public void createArray() {
+    public Array getArray() throws DataException {
+        Array array = createArray();
+        fillArray(array);
+        return array;
+    }
+
+    private Array createArray() throws DataException {
         int amount = 0;
 
         try (Scanner scanner = new Scanner(new BufferedInputStream(new FileInputStream(FILE_NAME)))) {
@@ -25,20 +32,19 @@ public class FileArrayBuilder extends ArrayBuilder {
                 amount++;
             }
         } catch (IOException e) {
-            throw new RuntimeException("File reading error");
+            throw new DataException("File reading error", e);
         }
 
-        array = new Array(amount);
+        return new Array(amount);
     }
 
-    @Override
-    public void buildValues() {
+    private void fillArray(Array array) throws DataException {
         try (Scanner scanner = new Scanner(new BufferedInputStream(new FileInputStream(FILE_NAME)))) {
             for (int i = 0; i < array.size(); i++) {
                 array.set(i, scanner.nextInt());
             }
         } catch (IOException e) {
-            throw new RuntimeException("File reading error");
+            throw new DataException("File reading error", e);
         }
     }
 }

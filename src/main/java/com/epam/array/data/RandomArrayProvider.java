@@ -1,22 +1,27 @@
-package com.epam.array.builder;
+package com.epam.array.data;
 
 import com.epam.array.entity.Array;
 
 import java.util.Random;
 
-public class RandomArrayBuilder extends ArrayBuilder {
+public class RandomArrayProvider implements ArrayProvider {
 
     private static final int UPPER_BOUND = 192;
 
     @Override
-    public void createArray() {
-        Random random = new Random();
-        int length = random.nextInt(UPPER_BOUND);
-        array = new Array(length);
+    public Array getArray() {
+        Array array = createArray();
+        fillArray(array);
+        return array;
     }
 
-    @Override
-    public void buildValues() {
+    private Array createArray() {
+        Random random = new Random();
+        int length = random.nextInt(UPPER_BOUND);
+        return new Array(length);
+    }
+
+    private void fillArray(Array array) {
         Random random = new Random();
         for (int i = 0; i < array.size(); i++) {
             array.set(i, random.nextInt(UPPER_BOUND));

@@ -1,4 +1,4 @@
-package com.epam.array.builder;
+package com.epam.array.data;
 
 public enum InputType {
     CONSOLE, FILE, RANDOM
