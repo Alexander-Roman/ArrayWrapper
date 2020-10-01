@@ -46,6 +46,6 @@ public class Runner {
 
         ArrayHandler handler = new ArrayHandler();
         int index = handler.binarySearchIndexOf(array, search);
-        LOGGER.log(Level.DEBUG, "Search result index: " + index);
+        LOGGER.log(Level.DEBUG, "Search result index of " + search + ": " + index);
     }
 }

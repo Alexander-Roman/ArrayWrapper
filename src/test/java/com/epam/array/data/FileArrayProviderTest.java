@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 
 public class FileArrayProviderTest {
 
-    public static final String EMPTY_FILE = "src/test/resources/FileArrayBuilderInputTestEmpty";
-    public static final String LOST_FILE = "src/test/resources/FileArrayBuilderInputTestLost";
-    private static final String CORRECT_FILE = "src/test/resources/FileArrayBuilderInputTest";
+    public static final String EMPTY_FILE = "src/test/resources/FileArrayProviderInputTestEmpty";
+    public static final String LOST_FILE = "src/test/resources/FileArrayProviderInputTestLost";
+    private static final String CORRECT_FILE = "src/test/resources/FileArrayProviderInputTest";
 
     @Test
     public void getArrayTestShouldReturnCorrectArrayFromFile() throws DataException {

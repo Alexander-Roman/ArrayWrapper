@@ -2,7 +2,7 @@ package com.epam.array.data;
 
 public class ArrayProviderFactory {
 
-    private static final String FILE_NAME = "data/FileArrayBuilderInput";
+    private static final String FILE_NAME = "data/FileArrayProviderInput";
 
     public static ArrayProvider create(InputType inputType) {
         switch (inputType) {
